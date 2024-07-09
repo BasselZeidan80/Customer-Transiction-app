@@ -16,7 +16,7 @@ const CustomerTable = ({ customers, transactions, onCustomerSelect }) => {
     transaction.amount.toString().includes(filter.amount)
   );
 
-  const groupedTransactions = filteredCustomers.map((customer) => {
+  const groupedTransactions = filteredCustomers?.map((customer) => {
     const customerTransactions = filteredTransactions.filter(
       (transaction) => transaction.customer_id === customer.id
     );
@@ -57,7 +57,7 @@ const CustomerTable = ({ customers, transactions, onCustomerSelect }) => {
           </tr>
         </thead>
         <tbody>
-          {groupedTransactions.map(({ customer, transactions }) => (
+          {groupedTransactions?.map(({ customer, transactions }) => (
             <React.Fragment key={customer.id}>
               <tr
                 onClick={() => onCustomerSelect(customer)}
