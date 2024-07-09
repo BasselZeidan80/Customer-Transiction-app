@@ -16,6 +16,16 @@ const CustomerTable = ({ customers, transactions, onCustomerSelect }) => {
     transaction.amount.toString().includes(filter.amount)
   );
 
+  const groupedTransactions = filteredCustomers.map((customer) => {
+    const customerTransactions = filteredTransactions.filter(
+      (transaction) => transaction.customer_id === customer.id
+    );
+    return {
+      customer,
+      transactions: customerTransactions,
+    };
+  });
+
   return (
     <>
       <div className="row mb-3">
@@ -47,24 +57,28 @@ const CustomerTable = ({ customers, transactions, onCustomerSelect }) => {
           </tr>
         </thead>
         <tbody>
-          {filteredCustomers.map((customer) => (
+          {groupedTransactions.map(({ customer, transactions }) => (
             <React.Fragment key={customer.id}>
               <tr
                 onClick={() => onCustomerSelect(customer)}
                 style={{ cursor: "pointer" }}
               >
-                <td>{customer.name}</td>
-                <td colSpan="2"></td>
+                <td rowSpan={transactions.length || 1}>{customer.name}</td>
+                {transactions.length > 0 ? (
+                  <>
+                    <td>{transactions[0].date}</td>
+                    <td>{transactions[0].amount}</td>
+                  </>
+                ) : (
+                  <td colSpan="2">No transactions</td>
+                )}
               </tr>
-              {filteredTransactions
-                .filter((t) => t.customer_id === customer.id)
-                .map((transaction) => (
-                  <tr key={transaction.id}>
-                    <td></td>
-                    <td>{transaction.date}</td>
-                    <td>{transaction.amount}</td>
-                  </tr>
-                ))}
+              {transactions.slice(1).map((transaction) => (
+                <tr key={transaction.id}>
+                  <td>{transaction.date}</td>
+                  <td>{transaction.amount}</td>
+                </tr>
+              ))}
             </React.Fragment>
           ))}
         </tbody>
