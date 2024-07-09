@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Customer-Transiction-app/static/css/main.f251f349.css",
-    "main.js": "/Customer-Transiction-app/static/js/main.b8526841.js",
+    "main.js": "/Customer-Transiction-app/static/js/main.3db3296c.js",
     "index.html": "/Customer-Transiction-app/index.html",
     "main.f251f349.css.map": "/Customer-Transiction-app/static/css/main.f251f349.css.map",
-    "main.b8526841.js.map": "/Customer-Transiction-app/static/js/main.b8526841.js.map"
+    "main.3db3296c.js.map": "/Customer-Transiction-app/static/js/main.3db3296c.js.map"
   },
   "entrypoints": [
     "static/css/main.f251f349.css",
-    "static/js/main.b8526841.js"
+    "static/js/main.3db3296c.js"
   ]
 }
