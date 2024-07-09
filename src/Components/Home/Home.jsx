@@ -9,7 +9,7 @@ export default function Home() {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const getDataFromJson = async () => {
       const customersRes = await axios.get("http://localhost:3001/customers");
       const transactionsRes = await axios.get(
         "http://localhost:3001/transactions"
@@ -17,7 +17,7 @@ export default function Home() {
       setCustomers(customersRes.data);
       setTransactions(transactionsRes.data);
     };
-    fetchData();
+    getDataFromJson();
   }, []);
 
   return (
