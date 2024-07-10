@@ -18,7 +18,7 @@ const CustomerTable = ({ customers, transactions, onCustomerSelect }) => {
 
   const groupedTransactions = filteredCustomers?.map((customer) => {
     const customerTransactions = filteredTransactions.filter(
-      (transaction) => transaction.customer_id === customer.id
+      (transaction) => transaction.customer_id == customer.id
     );
     return {
       customer,

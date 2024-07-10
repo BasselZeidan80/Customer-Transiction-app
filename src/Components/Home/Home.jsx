@@ -36,7 +36,7 @@ export default function Home() {
             <TransactionGraph
               customer={selectedCustomer}
               transactions={transactions.filter(
-                (t) => t.customer_id === selectedCustomer.id
+                (t) => t.customer_id == selectedCustomer.id
               )}
             />
           )}
